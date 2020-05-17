@@ -73,7 +73,7 @@ Remember, by default, the user is not allowed interactive shell login,
 If you want interactive login as well, you will need to pass 
   another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
 
-Read more at https://gitlab.com/kamranazeem/docker-ssh-server
+Read more at https://gitlab.com/kamranazeem/ssh-server
 
 "Alpine Linux v3.10"
 Connection to 172.17.0.2 closed.
@@ -111,7 +111,7 @@ Remember, by default, the user is not allowed interactive shell login,
 If you want interactive login as well, you will need to pass 
   another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
 
-Read more at https://gitlab.com/kamranazeem/docker-ssh-server
+Read more at https://gitlab.com/kamranazeem/ssh-server
 
 "Alpine Linux v3.10"
 
