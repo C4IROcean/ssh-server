@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.11
 
 # Our authorized_keys file path will always be fixed, so we don't need git to pull it.
 # e.g. https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys
