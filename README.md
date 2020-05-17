@@ -21,7 +21,7 @@ By default, the user is not allowed interactive shell login. If you want interac
 
 ## Environment variables used in this image:
 ### `AUTH_KEYS_URL` 
-Example: `AUTH_KEYS_URL=https://gitlab.com/mesalman/ssh-keys/-/raw/master/authorized_keys`
+Example: `AUTH_KEYS_URL=https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys`
 
 ### `ALLOW_INTERACTIVE_LOGIN`
 Example: `ALLOW_INTERACTIVE_LOGIN=true`
@@ -46,7 +46,7 @@ Disconnected from 172.17.0.2 port 22
 ### Using a git repository for `authorized_keys`: 
 ```
 [kamran@kworkhorse ssh-server]$ docker run \
-  -e AUTH_KEYS_URL=https://gitlab.com/mesalman/ssh-keys/-/raw/master/authorized_keys  \
+  -e AUTH_KEYS_URL=https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys  \
   -d local/ssh-server 
 ```
 
@@ -75,7 +75,7 @@ Connection to 172.17.0.2 closed.
 ### Allow interactive shell/login:
 ```
 [kamran@kworkhorse ssh-server]$ docker run \
-  -e AUTH_KEYS_URL=https://gitlab.com/mesalman/ssh-keys/-/raw/master/authorized_keys \
+  -e AUTH_KEYS_URL=https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys \
   -e ALLOW_INTERACTIVE_LOGIN=true  \
   -d local/ssh-server 
 ```

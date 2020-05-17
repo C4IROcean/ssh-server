@@ -1,7 +1,7 @@
 FROM alpine:3.10
 
 # Our authorized_keys file path will always be fixed, so we don't need git to pull it.
-# e.g. https://gitlab.com/mesalman/ssh-keys/-/raw/master/authorized_keys
+# e.g. https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys
 
 # Notes:
 # * The instructions: "mkdir -p ~root/.ssh && chmod 700 ~root/.ssh/" seems unnecessary,

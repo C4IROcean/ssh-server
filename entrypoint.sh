@@ -1,6 +1,7 @@
 #!/bin/sh
 # entrypoint for ssh-server
 # It expects an environment variable containing a web-link to a publicly available ssh-keys file.
+# e.g. https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys
 # That file is then pulled and saved into /home/sshuser/.ssh/authorized_keys.
 # There are other ways to provide this file too. 
 #   For example by mounting a directory containing authorized_keys onto "/home/sshuser/.ssh/" .
