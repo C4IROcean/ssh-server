@@ -1,0 +1,14 @@
+LogLevel INFO
+
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+PermitRootLogin no
+
+AllowTcpForwarding yes
+GatewayPorts no
+X11Forwarding no
+
+# good stuff! https://unix.stackexchange.com/questions/14312/how-to-restrict-an-ssh-user-to-only-allow-ssh-tunneling

@@ -1,0 +1,14 @@
+Welcome to Alpine based ssh-server!
+
+How does it work?
+----------------
+You should have a list of user's (public) ssh keys (in openssh format), in a (separate) git repository. Then use the raw link of the authorized_keys file from the master branch of that repository, by passing it as an environment variable (`AUTH_KEYS_URL`) to the container. The container pulls this file from the URL, and stores it as `/home/sshuser/.ssh/authorized_keys`. 
+
+Then, you can connect to this container using `sshuser` user account. 
+
+Remember, by default, the user is not allowed interactive shell login, because the purpose is just to use this container for "port-forwarding" over SSH connection. 
+
+If you want interactive login, you will need to pass another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
+
+Read more at https://gitlab.com/kamranazeem/docker-ssh-server
+
