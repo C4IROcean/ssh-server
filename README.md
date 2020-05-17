@@ -34,7 +34,7 @@ Example: `ALLOW_INTERACTIVE_LOGIN=true`
 [kamran@kworkhorse ssh-server]$ docker run -d local/ssh-server
 ```
 
-Notice, I can't login:
+Notice, I can't connect, nor login:
 ```
 [kamran@kworkhorse ssh-server]$ ssh sshuser@172.17.0.2
 Received disconnect from 172.17.0.2 port 22:2: Too many authentication failures
@@ -50,19 +50,24 @@ Disconnected from 172.17.0.2 port 22
   -d local/ssh-server 
 ```
 
-Notice, I can connect, but am not allowed an interactive shell/login:
+Notice, I can connect, but am not allowed an interactive shell/login. The helpful text below is coming from `/etc/motd` file.
 ```
 [kamran@kworkhorse ssh-server]$ ssh sshuser@172.17.0.2
-Welcome to Alpine!
+Welcome to Alpine based ssh-server!
 
-The Alpine Wiki contains a large amount of how-to guides and general
-information about administrating Alpine systems.
-See <http://wiki.alpinelinux.org/>.
+How does it work?
+----------------
+You should have a list of user's (public) ssh keys (in openssh format), in a (separate) git repository. Then use the raw link of the authorized_keys file from the master branch of that repository, by passing it as an environment variable (`AUTH_KEYS_URL`) to the container. The container pulls this file from the URL, and stores it as `/home/sshuser/.ssh/authorized_keys`. 
 
-You can setup the system with the command: setup-alpine
+Then, you can connect to this container using `sshuser` user account. 
 
-You may change this message by editing /etc/motd.
+Remember, by default, the user is not allowed interactive shell login, because the purpose is just to use this container for "port-forwarding" over SSH connection. 
 
+If you want interactive login, you will need to pass another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
+
+Read more at https://gitlab.com/kamranazeem/docker-ssh-server
+
+"Alpine Linux v3.10"
 Connection to 172.17.0.2 closed.
 [kamran@kworkhorse ssh-server]$ 
 ```
@@ -75,18 +80,24 @@ Connection to 172.17.0.2 closed.
   -d local/ssh-server 
 ```
 
-Notice, this time I am able to login interactively.
+Notice, this time I am able to connect, and login interactively.
 ```
 [kamran@kworkhorse ssh-server]$ ssh sshuser@172.17.0.2
-Welcome to Alpine!
+Welcome to Alpine based ssh-server!
 
-The Alpine Wiki contains a large amount of how-to guides and general
-information about administrating Alpine systems.
-See <http://wiki.alpinelinux.org/>.
+How does it work?
+----------------
+You should have a list of user's (public) ssh keys (in openssh format), in a (separate) git repository. Then use the raw link of the authorized_keys file from the master branch of that repository, by passing it as an environment variable (`AUTH_KEYS_URL`) to the container. The container pulls this file from the URL, and stores it as `/home/sshuser/.ssh/authorized_keys`. 
 
-You can setup the system with the command: setup-alpine
+Then, you can connect to this container using `sshuser` user account. 
 
-You may change this message by editing /etc/motd.
+Remember, by default, the user is not allowed interactive shell login, because the purpose is just to use this container for "port-forwarding" over SSH connection. 
+
+If you want interactive login, you will need to pass another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
+
+Read more at https://gitlab.com/kamranazeem/docker-ssh-server
+
+"Alpine Linux v3.10"
 
 902b2ff30c4f:~$ 
 ```
