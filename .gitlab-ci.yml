@@ -1,0 +1,19 @@
+variables:
+  CONTAINER_IMAGE: kamranazeem/ssh-server
+  DOCKER_USER: kamranazeem
+  
+
+build-and-push-image:
+  stage: build
+  # This "image" is used by the runner
+  image: docker:latest
+  services:
+  - docker:dind
+  # Inside the runner , "docker in docker" runs as a service,
+  #   so docker commands can find the docker daemon and do their thing.
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_TOKEN}
+    - docker build -t ${CONTAINER_IMAGE}:${CI_COMMIT_SHORT_SHA} -t ${CONTAINER_IMAGE}:${CI_COMMIT_REF_NAME} -t ${CONTAINER_IMAGE}:latest .
+    - docker push ${CONTAINER_IMAGE}:${CI_COMMIT_SHORT_SHA}
+    - docker push ${CONTAINER_IMAGE}:${CI_COMMIT_REF_NAME}
+    - docker push ${CONTAINER_IMAGE}:latest 
