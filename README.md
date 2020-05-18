@@ -25,7 +25,15 @@ Example: `AUTH_KEYS_URL=https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/mas
 
 ### `ALLOW_INTERACTIVE_LOGIN`
 Example: `ALLOW_INTERACTIVE_LOGIN=true`
+
 **Note:** Any value other than the word `true` is ignored.
+
+### `TZ`
+You would want that any incoming SSH connections are logged with correct timestamp according to the timezone. That is why `tzdata` is added to the container. Use `TZ` environment variable to set (and use) timezone for your ssh container instance.
+
+Example: `TZ=Europe/London`
+
+**Note:** List of time zones can be obtained by listing the contents of `/usr/share/zoneinfo/` .
 
 ## Test run / examples:
 
@@ -73,6 +81,9 @@ Remember, by default, the user is not allowed interactive shell login,
 If you want interactive login as well, you will need to pass 
   another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
 
+Use `TZ` environment variable to set (and use) correct timezone 
+  for your ssh container instance.
+  
 Read more at https://gitlab.com/kamranazeem/ssh-server
 
 "Alpine Linux v3.10"
@@ -85,6 +96,7 @@ Connection to 172.17.0.2 closed.
 [kamran@kworkhorse ssh-server]$ docker run \
   -e AUTH_KEYS_URL=https://gitlab.com/kamranazeem/public-ssh-keys/-/raw/master/authorized_keys \
   -e ALLOW_INTERACTIVE_LOGIN=true  \
+  -e TZ=Europe/London \
   -d local/ssh-server 
 ```
 
@@ -111,9 +123,14 @@ Remember, by default, the user is not allowed interactive shell login,
 If you want interactive login as well, you will need to pass 
   another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
 
+Use `TZ` environment variable to set (and use) correct timezone 
+  for your ssh container instance.
+
 Read more at https://gitlab.com/kamranazeem/ssh-server
 
 "Alpine Linux v3.10"
 
-902b2ff30c4f:~$ 
+902b2ff30c4f:~$ date
+Mon May 18 13:16:33 BST 2020
+902b2ff30c4f:~$
 ```

@@ -1,4 +1,4 @@
-Welcome to Alpine based ssh-server!
+Welcome to Alpine Linux based ssh-server!
 
 How does it work?
 ----------------
@@ -17,6 +17,9 @@ Remember, by default, the user is not allowed interactive shell login,
 
 If you want interactive login as well, you will need to pass 
   another environment variable (`ALLOW_INTERACTIVE_LOGIN`).
+
+Use `TZ` environment variable to set (and use) correct timezone 
+  for your ssh container instance.
 
 Read more at https://gitlab.com/kamranazeem/ssh-server
 
