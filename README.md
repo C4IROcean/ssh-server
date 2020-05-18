@@ -134,3 +134,8 @@ Read more at https://gitlab.com/kamranazeem/ssh-server
 Mon May 18 13:16:33 BST 2020
 902b2ff30c4f:~$
 ```
+
+------
+
+### Acknowledgment/Credits: 
+This SSH container is built on the ideas generated during a workshop with my friend [Salman Mukhtar](https://gitlab.com/mesalman).

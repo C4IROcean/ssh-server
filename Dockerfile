@@ -1,10 +1,3 @@
-###################################################################################
-#
-# Acknowledgment/Credit: This SSH container is built on the ideas generated during 
-#   a workshop with my friend Salman Mukhtar (https://gitlab.com/mesalman).
-#
-###################################################################################
-
 FROM alpine:3.11
 
 # Notes:

@@ -12,7 +12,8 @@ AUTH_KEYS_PATH=/home/sshuser/.ssh/authorized_keys
 
 if [ ! -z "${AUTH_KEYS_URL}" ]; then
   echo "Downloading public authentication 'authorized_keys' file from AUTH_KEYS_URL: ${AUTH_KEYS_URL} ..."
-  wget -O ${AUTH_KEYS_PATH} ${AUTH_KEYS_URL}
+  wget -q -O ${AUTH_KEYS_PATH} ${AUTH_KEYS_URL}
+  echo "Found $(grep -v "^$" ${AUTH_KEYS_PATH}| wc -l) keys in ${AUTH_KEYS_PATH} file."
   chown sshuser:sshuser ${AUTH_KEYS_PATH}
 else
   echo "The variable AUTH_KEYS_URL was found empty, just so you know!"
