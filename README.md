@@ -4,6 +4,42 @@ The title says it all.
 ## Why?
 Because, I needed a way to forward MySQL port from inside a kubernetes cluster to a dev (or even ops) computer, without needing to give full `kubectl` access to the kubernetes cluster. Using this image as a sidecar with the MySQL db container, and by using SSH port-forwarding, in concert with public part of SSH key-pairs, anyone can be given access to the MySQL service *"only"*.
 
+## How to setup SSH tunnel with mysql using this sidecar?
+
+```
+[kamran@kworkhorse ~]$ ssh -L 3306:127.0.0.1:3306 -p 32222 sshuser@34.142.115.100
+mysql-0:~$
+```
+
+Now open another terminal and use normal mysql command to connect to this forwarded port:
+```
+[kamran@kworkhorse ~]$ mysql -h 127.0.0.1 -u dbadmin -p
+Enter password: 
+
+MariaDB [(none)]>
+
+MariaDB [(none)]> show databases;
+```
+
+## What if I have a local mysql instance running already on port 3306?
+If - for some reason - you have a local mysql instance on your local computer, then simply edit the command shown above, and assign a different port number to the forwarded port on local computer.
+
+Example:
+```
+[kamran@kworkhorse ~]$ ssh -L 33060:127.0.0.1:3306 -p 32222 sshuser@34.142.115.100
+mysql-0:~$
+```
+
+Then, use the mysql command with extra `-P 33060` parameter:
+
+
+```
+[kamran@kworkhorse ~]$ mysql -h 127.0.0.1 -P 33060 -u dbadmin -p
+Enter password: 
+
+MariaDB [(none)]> 
+``` 
+
 ## Can "anyone" login to my SSH container?
 
 Or, **"Can "anyone" get access to my DB service through this SSH container?"**
